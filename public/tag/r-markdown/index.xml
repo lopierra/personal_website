@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R Markdown | Pierrette Lo</title>
+    <link>/tag/r-markdown/</link>
+      <atom:link href="/tag/r-markdown/index.xml" rel="self" type="application/rss+xml" />
+    <description>R Markdown</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Pierrette Lo, 2020</copyright><lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>R Markdown</title>
+      <link>/tag/r-markdown/</link>
+    </image>
+    
+    <item>
+      <title>I made a website!</title>
+      <link>/post/blogdown/</link>
+      <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/blogdown/</guid>
+      <description>&lt;p&gt;Hello, world!&lt;/p&gt;
+&lt;p&gt;There is a lot of great information out there about blogdown, Hugo, and the Academic theme that I chose for my site. I wanted to list my references here, as well as (mostly for my future self) the actual things I did to build this site.&lt;/p&gt;
+&lt;h3 id=&#34;official-documentation&#34;&gt;Official documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blogdown: Creating Websites with R Markdown&lt;/a&gt;, by Yihui Xie, Amber Thomas &amp;amp; Alison Presmanes Hill&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation for the Hugo Academic theme&lt;/a&gt;, by George Cushen&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;quicker-start-guides&#34;&gt;Quicker-start guides&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Up &amp;amp; running with blogdown&lt;/a&gt;, by Alison Hill&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.kevinzolea.com/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Creating a website with the academic theme in blogdown&lt;/a&gt;, by Kevin Zolea&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://andreaczhang.rbind.io/post/my-1st-blogpost/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Overwhelmed by Hugo academic theme: a beginner&amp;rsquo;s guide&lt;/a&gt;, by Chi Zhang&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;my-process-a-work-in-progress&#34;&gt;My process (a work in progress)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1. Create new Github repo for the site&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Create new RStudio project from the Github repo&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. Install {blogdown} and {hugo}&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;devtools::install_github(&amp;quot;rstudio/blogdown&amp;quot;)
+
+blogdown::install_hugo()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;4. Edit &lt;code&gt;.gitignore&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+blogdown
+Thumbs.db # if a Mac user, .DS_Store instead  
+public/ # if using Netlify
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;5. Create example site with Academic theme&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;blogdown::new_site(theme = &amp;quot;gcushen/hugo-academic&amp;quot;, 
+                   theme_example = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;6. Personalize content&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Add my author info:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Change content &amp;gt; authors &amp;gt; rename folder &amp;ldquo;admin&amp;rdquo; to &amp;ldquo;pierrette&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Then change user to display in content &amp;gt; home &amp;gt; &lt;code&gt;about.md&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fill in or comment out information in config &amp;gt; _default &amp;gt; &lt;code&gt;params.toml&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Site setup:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modify root &amp;gt; &lt;code&gt;config.toml&lt;/code&gt; to change title &amp;amp; copyright&lt;/li&gt;
+&lt;li&gt;Change theme, font size, etc. in config &amp;gt; _default &amp;gt; &lt;code&gt;params.toml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Modify navigation links in config &amp;gt; _default &amp;gt; &lt;code&gt;menus.toml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add blogdown link to the site footer in themes &amp;gt; hugo-academic &amp;gt; layouts &amp;gt; partials &amp;gt; &lt;code&gt;site_footer.html&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Also comment out the &amp;ldquo;Privacy Policy/Terms&amp;rdquo; part of the footer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Content:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modify info in pages in the &lt;code&gt;home&lt;/code&gt; folder
+&lt;ul&gt;
+&lt;li&gt;These can be &amp;ldquo;widgets&amp;rdquo; that appear on your home page, and/or separate pages with menu links&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Remove sections (eg. &amp;ldquo;Demo&amp;rdquo;, &amp;ldquo;hero&amp;rdquo;) without deleting the actual content by going to content &amp;gt; home &amp;gt; demo.md and changing &lt;code&gt;active = false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Or just delete the content and refer back to the 
+&lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;example site&lt;/a&gt; if needed&lt;/li&gt;
+&lt;li&gt;Super helpful 
+&lt;a href=&#34;https://gist.github.com/rxaviers/7360908&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;emoji reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Add-ins:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Serve Site&amp;rdquo; to see it refresh live in the viewer as you work
+&lt;ul&gt;
+&lt;li&gt;See 
+&lt;a href=&#34;https://github.com/rstudio/blogdown/issues/404&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; if it keeps opening new browser tabs every time you save&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Insert Image&amp;rdquo; for blog posts/projects so you don&amp;rsquo;t have to use the shameful Paint 3D cheat to resize the image&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;New Post&amp;rdquo; instead of manually creating a new post folder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Future directions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Figure out an efficient workflow for when I have 10 open files called &lt;code&gt;index.md&lt;/code&gt; 🤔&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;7. Commit and push to GitHub&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

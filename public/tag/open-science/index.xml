@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>open science | Pierrette Lo</title>
+    <link>/tag/open-science/</link>
+      <atom:link href="/tag/open-science/index.xml" rel="self" type="application/rss+xml" />
+    <description>open science</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Pierrette Lo, 2020</copyright><lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>open science</title>
+      <link>/tag/open-science/</link>
+    </image>
+    
+    <item>
+      <title>csv,conf,v5 recap</title>
+      <link>/post/csvconfv5/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/csvconfv5/</guid>
+      <description>&lt;p&gt;I had the pleasure of attending the 
+&lt;a href=&#34;https://csvconf.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;csv,conf,v5&lt;/a&gt; virtual conference last week. It&amp;rsquo;s named after the CSV data format, but it&amp;rsquo;s a unique mix of speakers and topics at the intersection of data science, journalism, tech, advocacy, open source, academic research, and government.&lt;/p&gt;
+&lt;p&gt;I attended in person last year and wasn&amp;rsquo;t sure it would be relevant to our interests as biomedical researchers, but I came away inspired about open science and reproducibility. It was also refreshing to interact with so many interesting people from outside our usual bubble.&lt;/p&gt;
+&lt;p&gt;This year&amp;rsquo;s conference was scheduled to take place in Washington, DC, but as a small upside of the pandemic, it was converted to a virtual conference. They had solid attendance, the Crowdcast platform worked well, and the organizers did a phenomenal job of keeping things running smoothly and on time while making everyone feel welcome. Between the chat/question windows, Slack, and live-tweeting, I&amp;rsquo;m amazed at the multitasking involved in participating in a virtual conference.&lt;/p&gt;
+&lt;p&gt;Below is a quick rundown of talks and other resources that I found most relevant to my work. There was so much more content that I didn&amp;rsquo;t cover here, so if you have data-related side passions, I encourage you to explore the full schedule!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;General links:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Schedule &amp;amp; abstracts&lt;/a&gt; (will eventually link to all the talks and slides)&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://zenodo.org/communities/csvconfv5&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slide collection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.youtube.com/csvconf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Video collection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Teaching/Community/Collaborations:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/#katherine-simeon&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Learning-centered teaching for the non-traditional data classroom&lt;/a&gt; (talk) – Helpful tips for teaching/learning in workshops, meetups, online – basically the types of learning that most of us do these days&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/#angela-li&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data Communities and Those Who Build Them&lt;/a&gt; (talk) – How to build a community of practice to keep that nontraditional learning going. These &amp;ldquo;people&amp;rdquo; concepts are applicable to any area, not just data science&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/#tempest-van-schaik-phd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Building successful collaborations around healthcare data&lt;/a&gt; (talk) – How medical experts and computationalists can collaborate happily&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.facetsjournal.com/doi/10.1139/facets-2019-0020&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A graduate student perspective on overcoming barriers to interacting with open-source software&lt;/a&gt; (article) – Good read whether you&amp;rsquo;re the grad student or the person teaching them&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Open data/reproducible research:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/#hao-ye&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Accessibility and reproducibility in ecological time series analysis&lt;/a&gt; (talk) – How to package your open dataset into a compendium that others will actually be able to use. Example compendium 
+&lt;a href=&#34;https://github.com/weecology/MATSSdemo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/#lisa-federer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data and code for reproducible research&lt;/a&gt; (talk) – Interesting recap of the NLM&amp;rsquo;s Reproducibility Workshop held last year – basically a group effort to try to reproduce a paper (spoiler alert: it was hard and it didn&amp;rsquo;t work, but they learned a lot while trying!). There are still some good tutorials and other materials on best practices and tools for reproducible research on the workshop&amp;rsquo;s 
+&lt;a href=&#34;https://nlm-repro.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;website&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/#monica-granados-and-lily-zhao&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How Frictionless Data can help you grease your data&lt;/a&gt; (talk) – &amp;ldquo;The Frictionless Data initiative at Open Knowledge Foundation aims to reduce friction in working with data, with a goal to make it effortless to transport data among different tools and platforms for further analysis, and with an emphasis on reproducible research and open data.&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;Free virtual Frictionless Data workshop on May 20 – sign up 
+&lt;a href=&#34;https://blog.okfn.org/2020/04/28/join-the-frictionless-data-workshop-20-may/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/#james-perry-evans&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Protected health information breaches on GitHub&lt;/a&gt; (talk) – A terrifying true tale of PHI accidently uploaded to GitHub 😱😱😱&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://arxiv.org/pdf/1806.09525.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to read a research compendium&lt;/a&gt; (article) – &amp;ldquo;Research compendia are an increasingly used form of publication, which packages not only the research paper’s text and figures, but also all data and software for better reproducibility. We introduce the existing conventions for research compendia and suggest how to utilise their shared properties in a structured reading process.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://elifesciences.org/articles/16800&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How open science helps researchers succeed&lt;/a&gt; (article) – Practicing &amp;ldquo;open science&amp;rdquo; isn&amp;rsquo;t just about altruism – it can help your career, too&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;R:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://csvconf.com/speakers/#emily-riederer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RMarkdown-Driven Development&lt;/a&gt; (talk) – This was my favourite talk in terms of immediately useful tips. If you&amp;rsquo;ve been working in R but are ashamed to share your code with others – (a) don&amp;rsquo;t be! Everyone feels the same way; but (b) the tips in this talk will help you clean things up, both for others and your future self. This talk is based on this excellent 
+&lt;a href=&#34;https://emilyriederer.netlify.app/post/rmarkdown-driven-development/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blog post&lt;/a&gt; and 
+&lt;a href=&#34;https://emilyriederer.netlify.app/post/rmddd-tech-appendix/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;technical appendix&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
