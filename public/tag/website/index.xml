@@ -14,9 +14,9 @@
     
     <item>
       <title>I made a website!</title>
-      <link>/post/blogdown/</link>
+      <link>/post/i_made_a_website/</link>
       <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/blogdown/</guid>
+      <guid>/post/i_made_a_website/</guid>
       <description>&lt;p&gt;Hello, world!&lt;/p&gt;
 &lt;p&gt;There is a lot of great information out there about blogdown, Hugo, and the Academic theme that I chose for my site. I wanted to list my references here, as well as (mostly for my future self) the actual things I did to build this site.&lt;/p&gt;
 &lt;h3 id=&#34;official-documentation&#34;&gt;Official documentation&lt;/h3&gt;
