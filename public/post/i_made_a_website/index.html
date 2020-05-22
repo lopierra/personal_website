@@ -664,33 +664,19 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>Hello, world!</p>
+      <h2 id="hello-world">Hello, world!</h2>
 <p>There is a lot of great information out there about blogdown, Hugo, and the Academic theme that I chose for my site. I wanted to list my references here, as well as (mostly for my future self) the actual things I did to build this site.</p>
-<h3 id="official-documentation">Official documentation</h3>
-<ul>
-<li>
-<a href="https://bookdown.org/yihui/blogdown/" target="_blank" rel="noopener">blogdown: Creating Websites with R Markdown</a>, by Yihui Xie, Amber Thomas &amp; Alison Presmanes Hill</li>
-<li>
-<a href="https://sourcethemes.com/academic/docs/" target="_blank" rel="noopener">Documentation for the Hugo Academic theme</a>, by George Cushen</li>
-</ul>
-<h3 id="quicker-start-guides">Quicker-start guides</h3>
-<ul>
-<li>
-<a href="https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/" target="_blank" rel="noopener">Up &amp; running with blogdown</a>, by Alison Hill</li>
-<li>
-<a href="https://www.kevinzolea.com/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/" target="_blank" rel="noopener">Creating a website with the academic theme in blogdown</a>, by Kevin Zolea</li>
-<li>
-<a href="https://andreaczhang.rbind.io/post/my-1st-blogpost/" target="_blank" rel="noopener">Overwhelmed by Hugo academic theme: a beginner&rsquo;s guide</a>, by Chi Zhang</li>
-</ul>
-<h3 id="my-process-a-work-in-progress">My process (a work in progress)</h3>
-<p><strong>1. Create new Github repo for the site</strong></p>
-<p><strong>2. Create new RStudio project from the Github repo</strong></p>
-<p><strong>3. Install {blogdown} and {hugo}</strong></p>
+<p>Skip down for 
+<a href="#references">references</a>.</p>
+<h2 id="my-process-a-work-in-progress">My process (a work in progress)</h2>
+<h3 id="1-create-new-github-repo-for-the-site">1. Create new Github repo for the site</h3>
+<h3 id="2-create-new-rstudio-project-from-the-github-repo">2. Create new RStudio project from the Github repo</h3>
+<h3 id="3-install-blogdown-and-hugo">3. Install {blogdown} and {hugo}</h3>
 <pre><code>devtools::install_github(&quot;rstudio/blogdown&quot;)
 
 blogdown::install_hugo()
 </code></pre>
-<p><strong>4. Edit <code>.gitignore</code></strong></p>
+<h3 id="4-edit-gitignore">4. Edit <code>.gitignore</code></h3>
 <pre><code>.Rproj.user
 .Rhistory
 .RData
@@ -699,11 +685,11 @@ blogdown
 Thumbs.db # if a Mac user, .DS_Store instead  
 public/ # if using Netlify
 </code></pre>
-<p><strong>5. Create example site with Academic theme</strong></p>
+<h3 id="5-create-example-site-with-academic-theme">5. Create example site with Academic theme</h3>
 <pre><code>blogdown::new_site(theme = &quot;gcushen/hugo-academic&quot;, 
                    theme_example = TRUE)
 </code></pre>
-<p><strong>6. Personalize content</strong></p>
+<h3 id="6-personalize-content">6. Personalize content</h3>
 <p>Add my author info:</p>
 <ul>
 <li>Change content &gt; authors &gt; rename folder &ldquo;admin&rdquo; to &ldquo;pierrette&rdquo;</li>
@@ -731,8 +717,6 @@ public/ # if using Netlify
 <li>Remove sections (eg. &ldquo;Demo&rdquo;, &ldquo;hero&rdquo;) without deleting the actual content by going to content &gt; home &gt; demo.md and changing <code>active = false</code></li>
 <li>Or just delete the content and refer back to the 
 <a href="https://github.com/gcushen/hugo-academic/tree/master/exampleSite" target="_blank" rel="noopener">example site</a> if needed</li>
-<li>Super helpful 
-<a href="https://gist.github.com/rxaviers/7360908" target="_blank" rel="noopener">emoji reference</a></li>
 </ul>
 <p>Add-ins:</p>
 <ul>
@@ -749,7 +733,59 @@ public/ # if using Netlify
 <ul>
 <li>Figure out an efficient workflow for when I have 10 open files called <code>index.md</code> 🤔</li>
 </ul>
-<p><strong>7. Commit and push to GitHub</strong></p>
+<h3 id="7-commit-changes-and-push-to-github">7. Commit changes and push to GitHub</h3>
+<ul>
+<li><strong>PRO TIP:</strong> Don&rsquo;t name any of your post folders &ldquo;blogdown&rdquo;! It will be .git-ignored, and you will waste 2 hours trying to figure out why your post isn&rsquo;t showing up on your deployed site. 🤦</li>
+<li>Also, there will be a large amount of files to commit the first time. RStudio kept hanging when I tried to use the Git pane to commit everything - next time use the shell instead.</li>
+</ul>
+<h3 id="8-deploy">8. Deploy!</h3>
+<ul>
+<li>Sign up for Netlify account (instructions 
+<a href="https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/#build-your-site-in-rstudio" target="_blank" rel="noopener">here</a>)</li>
+<li>Select <code>New site from Git -&gt; Continuous Deployment: GitHub</code></li>
+<li>Connect Netlify to GitHub and select repo</li>
+<li>Check Hugo version in RStudio console using <code>blogdown::hugo_version()</code> and add <code>HUGO_VERSION</code> variable in Advanced build settings (instructions 
+<a href="https://alison.rbind.io/post/2019-02-19-hugo-netlify-toml/" target="_blank" rel="noopener">here</a>)</li>
+<li>Create a new text file in project root directory called <code>netlify.toml</code>; specify your hugo version</li>
+<li>Change site name at Netlify dashboard -&gt; Domain settings -&gt; Options</li>
+<li>Update baseurl with new URL in <code>config.toml</code></li>
+<li>Get an rbind.io domain name 
+<a href="https://github.com/rbind/support/issues" target="_blank" rel="noopener">here</a></li>
+<li><em>Note:</em> The <code>public</code> folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the <code>public</code> folder.</li>
+</ul>
+<hr>
+<h2 id="references">References</h2>
+<h3 id="official-documentation">Official documentation</h3>
+<ul>
+<li>
+<a href="https://bookdown.org/yihui/blogdown/" target="_blank" rel="noopener">blogdown: Creating Websites with R Markdown</a>, by Yihui Xie, Amber Thomas &amp; Alison Presmanes Hill</li>
+<li>
+<a href="https://sourcethemes.com/academic/docs/" target="_blank" rel="noopener">Documentation for the Hugo Academic theme</a>, by George Cushen</li>
+<li>
+<a href="https://github.com/gcushen/hugo-academic/tree/master/exampleSite" target="_blank" rel="noopener">Academic theme example site</a></li>
+</ul>
+<h3 id="quicker-start-guides">Quicker-start guides</h3>
+<ul>
+<li>
+<a href="https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/" target="_blank" rel="noopener">Up &amp; running with blogdown</a>, by Alison Hill</li>
+<li>
+<a href="https://www.kevinzolea.com/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/" target="_blank" rel="noopener">Creating a website with the academic theme in blogdown</a>, by Kevin Zolea</li>
+<li>
+<a href="https://andreaczhang.rbind.io/post/my-1st-blogpost/" target="_blank" rel="noopener">Overwhelmed by Hugo academic theme: a beginner&rsquo;s guide</a>, by Chi Zhang</li>
+</ul>
+<h3 id="troubleshootingtips">Troubleshooting/tips</h3>
+<ul>
+<li>
+<a href="https://alison.rbind.io/post/2019-02-19-hugo-netlify-toml/" target="_blank" rel="noopener">A spoonful of Hugo: The netlify.toml file</a>, by Alison Hill</li>
+<li>
+<a href="https://alison.rbind.io/post/2019-03-04-hugo-troubleshooting/" target="_blank" rel="noopener">A spoonful of Hugo: Troubleshooting your build</a>, by Alison Hill</li>
+<li>
+<a href="https://www.garrickadenbuie.com/blog/blogdown-netlify-new-post-workflow/" target="_blank" rel="noopener">A blogdown new post workflow with GitHub and Netlify</a>, by Garrick Aden-Buie</li>
+<li>
+<a href="https://gist.github.com/rxaviers/7360908" target="_blank" rel="noopener">Handy list of markdown emojis</a></li>
+<li>
+<a href="https://github.com/rstudio/blogdown/issues/404" target="_blank" rel="noopener">blogdown:::serve_site() keeps opening new browser tabs</a></li>
+</ul>
 
     </div>
 

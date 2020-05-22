@@ -79,33 +79,19 @@
       <link>/post/i_made_a_website/</link>
       <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
       <guid>/post/i_made_a_website/</guid>
-      <description>&lt;p&gt;Hello, world!&lt;/p&gt;
+      <description>&lt;h2 id=&#34;hello-world&#34;&gt;Hello, world!&lt;/h2&gt;
 &lt;p&gt;There is a lot of great information out there about blogdown, Hugo, and the Academic theme that I chose for my site. I wanted to list my references here, as well as (mostly for my future self) the actual things I did to build this site.&lt;/p&gt;
-&lt;h3 id=&#34;official-documentation&#34;&gt;Official documentation&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blogdown: Creating Websites with R Markdown&lt;/a&gt;, by Yihui Xie, Amber Thomas &amp;amp; Alison Presmanes Hill&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation for the Hugo Academic theme&lt;/a&gt;, by George Cushen&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;quicker-start-guides&#34;&gt;Quicker-start guides&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Up &amp;amp; running with blogdown&lt;/a&gt;, by Alison Hill&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://www.kevinzolea.com/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Creating a website with the academic theme in blogdown&lt;/a&gt;, by Kevin Zolea&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;https://andreaczhang.rbind.io/post/my-1st-blogpost/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Overwhelmed by Hugo academic theme: a beginner&amp;rsquo;s guide&lt;/a&gt;, by Chi Zhang&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;my-process-a-work-in-progress&#34;&gt;My process (a work in progress)&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;1. Create new Github repo for the site&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2. Create new RStudio project from the Github repo&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3. Install {blogdown} and {hugo}&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Skip down for 
+&lt;a href=&#34;#references&#34;&gt;references&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;my-process-a-work-in-progress&#34;&gt;My process (a work in progress)&lt;/h2&gt;
+&lt;h3 id=&#34;1-create-new-github-repo-for-the-site&#34;&gt;1. Create new Github repo for the site&lt;/h3&gt;
+&lt;h3 id=&#34;2-create-new-rstudio-project-from-the-github-repo&#34;&gt;2. Create new RStudio project from the Github repo&lt;/h3&gt;
+&lt;h3 id=&#34;3-install-blogdown-and-hugo&#34;&gt;3. Install {blogdown} and {hugo}&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;devtools::install_github(&amp;quot;rstudio/blogdown&amp;quot;)
 
 blogdown::install_hugo()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;4. Edit &lt;code&gt;.gitignore&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;4-edit-gitignore&#34;&gt;4. Edit &lt;code&gt;.gitignore&lt;/code&gt;&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;.Rproj.user
 .Rhistory
 .RData
@@ -114,11 +100,11 @@ blogdown
 Thumbs.db # if a Mac user, .DS_Store instead  
 public/ # if using Netlify
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;5. Create example site with Academic theme&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;5-create-example-site-with-academic-theme&#34;&gt;5. Create example site with Academic theme&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;blogdown::new_site(theme = &amp;quot;gcushen/hugo-academic&amp;quot;, 
                    theme_example = TRUE)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;6. Personalize content&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;6-personalize-content&#34;&gt;6. Personalize content&lt;/h3&gt;
 &lt;p&gt;Add my author info:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Change content &amp;gt; authors &amp;gt; rename folder &amp;ldquo;admin&amp;rdquo; to &amp;ldquo;pierrette&amp;rdquo;&lt;/li&gt;
@@ -146,8 +132,6 @@ public/ # if using Netlify
 &lt;li&gt;Remove sections (eg. &amp;ldquo;Demo&amp;rdquo;, &amp;ldquo;hero&amp;rdquo;) without deleting the actual content by going to content &amp;gt; home &amp;gt; demo.md and changing &lt;code&gt;active = false&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Or just delete the content and refer back to the 
 &lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;example site&lt;/a&gt; if needed&lt;/li&gt;
-&lt;li&gt;Super helpful 
-&lt;a href=&#34;https://gist.github.com/rxaviers/7360908&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;emoji reference&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Add-ins:&lt;/p&gt;
 &lt;ul&gt;
@@ -164,7 +148,59 @@ public/ # if using Netlify
 &lt;ul&gt;
 &lt;li&gt;Figure out an efficient workflow for when I have 10 open files called &lt;code&gt;index.md&lt;/code&gt; 🤔&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;7. Commit and push to GitHub&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;7-commit-changes-and-push-to-github&#34;&gt;7. Commit changes and push to GitHub&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PRO TIP:&lt;/strong&gt; Don&amp;rsquo;t name any of your post folders &amp;ldquo;blogdown&amp;rdquo;! It will be .git-ignored, and you will waste 2 hours trying to figure out why your post isn&amp;rsquo;t showing up on your deployed site. 🤦&lt;/li&gt;
+&lt;li&gt;Also, there will be a large amount of files to commit the first time. RStudio kept hanging when I tried to use the Git pane to commit everything - next time use the shell instead.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;8-deploy&#34;&gt;8. Deploy!&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Sign up for Netlify account (instructions 
+&lt;a href=&#34;https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/#build-your-site-in-rstudio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Select &lt;code&gt;New site from Git -&amp;gt; Continuous Deployment: GitHub&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Connect Netlify to GitHub and select repo&lt;/li&gt;
+&lt;li&gt;Check Hugo version in RStudio console using &lt;code&gt;blogdown::hugo_version()&lt;/code&gt; and add &lt;code&gt;HUGO_VERSION&lt;/code&gt; variable in Advanced build settings (instructions 
+&lt;a href=&#34;https://alison.rbind.io/post/2019-02-19-hugo-netlify-toml/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Create a new text file in project root directory called &lt;code&gt;netlify.toml&lt;/code&gt;; specify your hugo version&lt;/li&gt;
+&lt;li&gt;Change site name at Netlify dashboard -&amp;gt; Domain settings -&amp;gt; Options&lt;/li&gt;
+&lt;li&gt;Update baseurl with new URL in &lt;code&gt;config.toml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Get an rbind.io domain name 
+&lt;a href=&#34;https://github.com/rbind/support/issues&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Note:&lt;/em&gt; The &lt;code&gt;public&lt;/code&gt; folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the &lt;code&gt;public&lt;/code&gt; folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;h3 id=&#34;official-documentation&#34;&gt;Official documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blogdown: Creating Websites with R Markdown&lt;/a&gt;, by Yihui Xie, Amber Thomas &amp;amp; Alison Presmanes Hill&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation for the Hugo Academic theme&lt;/a&gt;, by George Cushen&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Academic theme example site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;quicker-start-guides&#34;&gt;Quicker-start guides&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Up &amp;amp; running with blogdown&lt;/a&gt;, by Alison Hill&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.kevinzolea.com/post/blogdown/creating-a-website-with-the-academic-theme-in-blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Creating a website with the academic theme in blogdown&lt;/a&gt;, by Kevin Zolea&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://andreaczhang.rbind.io/post/my-1st-blogpost/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Overwhelmed by Hugo academic theme: a beginner&amp;rsquo;s guide&lt;/a&gt;, by Chi Zhang&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;troubleshootingtips&#34;&gt;Troubleshooting/tips&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://alison.rbind.io/post/2019-02-19-hugo-netlify-toml/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A spoonful of Hugo: The netlify.toml file&lt;/a&gt;, by Alison Hill&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://alison.rbind.io/post/2019-03-04-hugo-troubleshooting/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A spoonful of Hugo: Troubleshooting your build&lt;/a&gt;, by Alison Hill&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.garrickadenbuie.com/blog/blogdown-netlify-new-post-workflow/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A blogdown new post workflow with GitHub and Netlify&lt;/a&gt;, by Garrick Aden-Buie&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://gist.github.com/rxaviers/7360908&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Handy list of markdown emojis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://github.com/rstudio/blogdown/issues/404&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blogdown:::serve_site() keeps opening new browser tabs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
