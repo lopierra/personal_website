@@ -87,6 +87,7 @@ Future directions:
 
 ### 8. Deploy!
 
+* **PRO TIP:** Don't try to do this for the first time "on your way to bed" at 11 pm.
 * Sign up for Netlify account (instructions [here](https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/#build-your-site-in-rstudio))
 * Select `New site from Git -> Continuous Deployment: GitHub`
 * Connect Netlify to GitHub and select repo

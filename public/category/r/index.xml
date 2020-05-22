@@ -155,6 +155,7 @@ public/ # if using Netlify
 &lt;/ul&gt;
 &lt;h3 id=&#34;8-deploy&#34;&gt;8. Deploy!&lt;/h3&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PRO TIP:&lt;/strong&gt; Don&amp;rsquo;t try to do this for the first time &amp;ldquo;on your way to bed&amp;rdquo; at 11 pm.&lt;/li&gt;
 &lt;li&gt;Sign up for Netlify account (instructions 
 &lt;a href=&#34;https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/#build-your-site-in-rstudio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;Select &lt;code&gt;New site from Git -&amp;gt; Continuous Deployment: GitHub&lt;/code&gt;&lt;/li&gt;
