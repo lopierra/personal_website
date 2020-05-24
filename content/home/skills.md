@@ -18,7 +18,7 @@ subtitle = ""
   icon = "r-project"
   icon_pack = "fab"
   name = "R"
-  description = "tidyverse, ggplot, RMarkdown, Shiny"
+  description = "tidyverse; ggplot; RMarkdown; Shiny"
   
 [[feature]]
   icon = "edit"

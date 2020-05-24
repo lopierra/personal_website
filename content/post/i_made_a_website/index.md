@@ -72,7 +72,8 @@ Content:
 Add-ins:
 
 * "Serve Site" to see it refresh live in the viewer as you work
-  * See [this](https://github.com/rstudio/blogdown/issues/404) if it keeps opening new browser tabs every time you save
+  * *Note:* you only need to run "Serve Site" once upon starting a new R session. If you click it more than once in a session, it will start opening a new browser tab every time you save (discussion of this bug [here](https://github.com/rstudio/blogdown/issues/404)) 
+  *  To fix this, per [Yihui](https://github.com/rstudio/blogdown/issues/404#issuecomment-524365799), clear the viewer history (using the broom button), and call `servr::browse_last()` to bring back the website to the viewer.
 * "Insert Image" for blog posts/projects so you don't have to use the shameful Paint 3D cheat to resize the image
 * "New Post" instead of manually creating a new post folder
 

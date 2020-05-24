@@ -19,7 +19,7 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[experience]]
-  title = "Data & Collaborations Project Manager, Druker Lab"
+  title = "Data & Collaborations Project Manager, Brian Druker Lab"
   company = "OHSU Knight Cancer Institute"
   company_url = "https://www.ohsu.edu/knight-cancer-institute"
   location = "Portland, OR"
@@ -27,7 +27,7 @@ date_format = "Jan 2006"
   date_end = ""
   description = """
   
-  I am continuing to serve as project manager for our lab's industry research partnerships, but with additional data science-related duties, including:
+  I am continuing to serve as project manager for our lab's industry research partnerships, but with additional data science-related duties, including: 
   
   * Using R, SQL, and other tools to improve data reporting and visualization for our group and our collaborators
   * Helping to develop and implement standards and best practices for reproducible research in our group (data organization, metadata, documentation, workflows, etc.)
@@ -44,7 +44,7 @@ date_format = "Jan 2006"
   date_end = "2018-06-01"
   description = """
   
-   This was a part-time internship (in addition to my full-time job at OHSU) at Recentia, a healthcare informatics startup. I worked on several clinical data science projects, including:
+   This was a part-time internship (in addition to my full-time job at OHSU) at Recentia, a healthcare informatics startup. I worked on several clinical data science projects, including: 
   
   * Preparing and cleaning large clinical datasets using bash, R, and SQL
   * Exploring various methods of subgroup mining using R packages such as mclust, and attempting to write my own optimization algorithm
@@ -54,7 +54,7 @@ date_format = "Jan 2006"
 """
 
 [[experience]]
-  title = "Alliance Manager, Druker Lab"
+  title = "Alliance Manager, Brian Druker Lab"
   company = "OHSU Knight Cancer Institute"
   company_url = "https://www.ohsu.edu/knight-cancer-institute"
   location = "Portland, OR"

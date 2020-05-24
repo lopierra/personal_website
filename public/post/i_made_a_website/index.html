@@ -205,6 +205,44 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167407684-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-167407684-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -722,8 +760,10 @@ public/ # if using Netlify
 <ul>
 <li>&ldquo;Serve Site&rdquo; to see it refresh live in the viewer as you work
 <ul>
-<li>See 
-<a href="https://github.com/rstudio/blogdown/issues/404" target="_blank" rel="noopener">this</a> if it keeps opening new browser tabs every time you save</li>
+<li><em>Note:</em> you only need to run &ldquo;Serve Site&rdquo; once upon starting a new R session. If you click it more than once in a session, it will start opening a new browser tab every time you save (discussion of this bug 
+<a href="https://github.com/rstudio/blogdown/issues/404" target="_blank" rel="noopener">here</a>)</li>
+<li>To fix this, per 
+<a href="https://github.com/rstudio/blogdown/issues/404#issuecomment-524365799" target="_blank" rel="noopener">Yihui</a>, clear the viewer history (using the broom button), and call <code>servr::browse_last()</code> to bring back the website to the viewer.</li>
 </ul>
 </li>
 <li>&ldquo;Insert Image&rdquo; for blog posts/projects so you don&rsquo;t have to use the shameful Paint 3D cheat to resize the image</li>
@@ -740,19 +780,46 @@ public/ # if using Netlify
 </ul>
 <h3 id="8-deploy">8. Deploy!</h3>
 <ul>
-<li><strong>PRO TIP:</strong> Don&rsquo;t try to do this for the first time &ldquo;on your way to bed&rdquo; at 11 pm.</li>
-<li>Sign up for Netlify account (instructions 
-<a href="https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/#build-your-site-in-rstudio" target="_blank" rel="noopener">here</a>)</li>
-<li>Select <code>New site from Git -&gt; Continuous Deployment: GitHub</code></li>
-<li>Connect Netlify to GitHub and select repo</li>
-<li>Check Hugo version in RStudio console using <code>blogdown::hugo_version()</code> and add <code>HUGO_VERSION</code> variable in Advanced build settings (instructions 
-<a href="https://alison.rbind.io/post/2019-02-19-hugo-netlify-toml/" target="_blank" rel="noopener">here</a>)</li>
-<li>Create a new text file in project root directory called <code>netlify.toml</code>; specify your hugo version</li>
-<li>Change site name at Netlify dashboard -&gt; Domain settings -&gt; Options</li>
-<li>Update baseurl with new URL in <code>config.toml</code></li>
-<li>Get an rbind.io domain name 
-<a href="https://github.com/rbind/support/issues" target="_blank" rel="noopener">here</a></li>
-<li><em>Note:</em> The <code>public</code> folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the <code>public</code> folder.</li>
+<li>
+<p><strong>PRO TIP:</strong> Don&rsquo;t try to do this for the first time &ldquo;on your way to bed&rdquo; at 11 pm.</p>
+</li>
+<li>
+<p>Sign up for Netlify account (instructions 
+<a href="https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/#build-your-site-in-rstudio" target="_blank" rel="noopener">here</a>)</p>
+</li>
+<li>
+<p>Select <code>New site from Git -&gt; Continuous Deployment: GitHub</code></p>
+</li>
+<li>
+<p>Connect Netlify to GitHub and select repo</p>
+</li>
+<li>
+<p>Check Hugo version in RStudio console using <code>blogdown::hugo_version()</code> and add <code>HUGO_VERSION</code> variable in Advanced build settings (instructions 
+<a href="https://alison.rbind.io/post/2019-02-19-hugo-netlify-toml/" target="_blank" rel="noopener">here</a>)</p>
+</li>
+<li>
+<p>Create a new text file in project root directory called <code>netlify.toml</code>; specify your hugo version</p>
+</li>
+<li>
+<p>Change site name at Netlify dashboard -&gt; Domain settings -&gt; Options</p>
+</li>
+<li>
+<p>Update baseurl with new URL in <code>config.toml</code></p>
+</li>
+<li>
+<p>Get an rbind.io domain name 
+<a href="https://github.com/rbind/support/issues" target="_blank" rel="noopener">here</a></p>
+</li>
+<li>
+<p>Start a new Google Analytics account for this website and add the account ID to <code>params.toml</code></p>
+</li>
+<li>
+<p>Add _redirects file to /static for &hellip;
+<a href="https://yihui.org/en/2017/11/301-redirect/" target="_blank" rel="noopener">reasons</a></p>
+</li>
+<li>
+<p><em>Note:</em> The <code>public</code> folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the <code>public</code> folder.</p>
+</li>
 </ul>
 <hr>
 <h2 id="references">References</h2>

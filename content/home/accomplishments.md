@@ -21,12 +21,12 @@ date_format = "Jan 2006"
 [[item]]
   organization = "OHSU Knight Cancer Institute"
   organization_url = "https://www.ohsu.edu/knight-cancer-institute"
-  title = "Spirit of the Knight Award"
+  title = "*Spirit of the Knight* Award"
   url = ""
   certificate_url = ""
   date_start = "2019-12-01"
   date_end = ""
-  description = "Peer-nominated award recognizing individuals for exceptional embodiment of the Knight Cancer Institute's guiding principles (in my case, *Working as a Connected Team*)"
+  description = "Peer-nominated award recognizing individuals for exceptional embodiment of the Knight Cancer Institute's guiding principles (in my case, *Working as a Connected Team*)."
   
 [[item]]
   organization = "OHSU Department of Medical Informatics & Clinical Epidemiology"

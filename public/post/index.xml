@@ -137,8 +137,10 @@ public/ # if using Netlify
 &lt;ul&gt;
 &lt;li&gt;&amp;ldquo;Serve Site&amp;rdquo; to see it refresh live in the viewer as you work
 &lt;ul&gt;
-&lt;li&gt;See 
-&lt;a href=&#34;https://github.com/rstudio/blogdown/issues/404&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; if it keeps opening new browser tabs every time you save&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Note:&lt;/em&gt; you only need to run &amp;ldquo;Serve Site&amp;rdquo; once upon starting a new R session. If you click it more than once in a session, it will start opening a new browser tab every time you save (discussion of this bug 
+&lt;a href=&#34;https://github.com/rstudio/blogdown/issues/404&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;To fix this, per 
+&lt;a href=&#34;https://github.com/rstudio/blogdown/issues/404#issuecomment-524365799&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Yihui&lt;/a&gt;, clear the viewer history (using the broom button), and call &lt;code&gt;servr::browse_last()&lt;/code&gt; to bring back the website to the viewer.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&amp;ldquo;Insert Image&amp;rdquo; for blog posts/projects so you don&amp;rsquo;t have to use the shameful Paint 3D cheat to resize the image&lt;/li&gt;
@@ -155,19 +157,46 @@ public/ # if using Netlify
 &lt;/ul&gt;
 &lt;h3 id=&#34;8-deploy&#34;&gt;8. Deploy!&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;PRO TIP:&lt;/strong&gt; Don&amp;rsquo;t try to do this for the first time &amp;ldquo;on your way to bed&amp;rdquo; at 11 pm.&lt;/li&gt;
-&lt;li&gt;Sign up for Netlify account (instructions 
-&lt;a href=&#34;https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/#build-your-site-in-rstudio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Select &lt;code&gt;New site from Git -&amp;gt; Continuous Deployment: GitHub&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Connect Netlify to GitHub and select repo&lt;/li&gt;
-&lt;li&gt;Check Hugo version in RStudio console using &lt;code&gt;blogdown::hugo_version()&lt;/code&gt; and add &lt;code&gt;HUGO_VERSION&lt;/code&gt; variable in Advanced build settings (instructions 
-&lt;a href=&#34;https://alison.rbind.io/post/2019-02-19-hugo-netlify-toml/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Create a new text file in project root directory called &lt;code&gt;netlify.toml&lt;/code&gt;; specify your hugo version&lt;/li&gt;
-&lt;li&gt;Change site name at Netlify dashboard -&amp;gt; Domain settings -&amp;gt; Options&lt;/li&gt;
-&lt;li&gt;Update baseurl with new URL in &lt;code&gt;config.toml&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Get an rbind.io domain name 
-&lt;a href=&#34;https://github.com/rbind/support/issues&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Note:&lt;/em&gt; The &lt;code&gt;public&lt;/code&gt; folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the &lt;code&gt;public&lt;/code&gt; folder.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PRO TIP:&lt;/strong&gt; Don&amp;rsquo;t try to do this for the first time &amp;ldquo;on your way to bed&amp;rdquo; at 11 pm.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sign up for Netlify account (instructions 
+&lt;a href=&#34;https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/#build-your-site-in-rstudio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &lt;code&gt;New site from Git -&amp;gt; Continuous Deployment: GitHub&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Connect Netlify to GitHub and select repo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check Hugo version in RStudio console using &lt;code&gt;blogdown::hugo_version()&lt;/code&gt; and add &lt;code&gt;HUGO_VERSION&lt;/code&gt; variable in Advanced build settings (instructions 
+&lt;a href=&#34;https://alison.rbind.io/post/2019-02-19-hugo-netlify-toml/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new text file in project root directory called &lt;code&gt;netlify.toml&lt;/code&gt;; specify your hugo version&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change site name at Netlify dashboard -&amp;gt; Domain settings -&amp;gt; Options&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Update baseurl with new URL in &lt;code&gt;config.toml&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Get an rbind.io domain name 
+&lt;a href=&#34;https://github.com/rbind/support/issues&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start a new Google Analytics account for this website and add the account ID to &lt;code&gt;params.toml&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add _redirects file to /static for &amp;hellip;
+&lt;a href=&#34;https://yihui.org/en/2017/11/301-redirect/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;reasons&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; The &lt;code&gt;public&lt;/code&gt; folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the &lt;code&gt;public&lt;/code&gt; folder.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;

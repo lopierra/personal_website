@@ -205,6 +205,44 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167407684-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-167407684-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -722,7 +760,7 @@
     
     <h1>About me</h1>
 
-    <p>I&rsquo;m a communicator and project manager with a passion for science. I like asking questions, but having been away from the bench for so long, I haven&rsquo;t been in a position to investigate answers. Recently, though, I decided that if I can&rsquo;t do my own experiments, I could at least get more hands-on with the data. I started teaching myself a little R and SQL in 2017, then fell down the rabbit hole of tidy data, data viz, reproducible research, and open science.  Since then, I&rsquo;ve been working on expanding my skill set and job duties to incorporate these newfound interests.</p>
+    <p>I&rsquo;m a communicator and project manager with a passion for science. I like asking questions, but having been away from the bench for so long, I haven&rsquo;t been in a position to investigate the answers. Recently, though, I decided that if I can&rsquo;t do my own experiments, I could at least get more hands-on with the data. I started teaching myself a little R and SQL in 2017, then fell down the rabbit hole of tidy data, data viz, reproducible research, and open science.  Since then, I&rsquo;ve been working on expanding my skill set and job duties to incorporate these newfound interests.</p>
 <p>I&rsquo;m currently a Data &amp; Collaborations Project Manager in Brian Druker&rsquo;s leukemia research lab at the Oregon Health &amp; Science University Knight Cancer Institute. My very diverse job duties include managing our lab&rsquo;s collaborations with pharma/biotech partners; leading our lab&rsquo;s journey towards reproducible research using open data-science tools; incorporating automation and reproducibility into our data analyses and reports; and helping my colleagues (and myself!) learn to use these tools.</p>
 
 
@@ -837,7 +875,7 @@
   <div class="col-12 col-sm-4">
     <div class="featurette-icon"><i class="fab fa-r-project"></i></div>
     <h3>R</h3>
-    <p>tidyverse, ggplot, RMarkdown, Shiny</p>
+    <p>tidyverse; ggplot; RMarkdown; Shiny</p>
   </div>
   
   
@@ -933,7 +971,7 @@
       <div class="col py-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">Data &amp; Collaborations Project Manager, Druker Lab</h4>
+            <h4 class="card-title exp-title text-muted mt-0 mb-1">Data &amp; Collaborations Project Manager, Brian Druker Lab</h4>
             <h4 class="card-title exp-company text-muted my-0"><a href="https://www.ohsu.edu/knight-cancer-institute" target="_blank" rel="noopener">OHSU Knight Cancer Institute</a></h4>
             <div class="text-muted exp-meta">
               Mar 2019 –
@@ -1022,7 +1060,7 @@
       <div class="col py-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">Alliance Manager, Druker Lab</h4>
+            <h4 class="card-title exp-title text-muted mt-0 mb-1">Alliance Manager, Brian Druker Lab</h4>
             <h4 class="card-title exp-company text-muted my-0"><a href="https://www.ohsu.edu/knight-cancer-institute" target="_blank" rel="noopener">OHSU Knight Cancer Institute</a></h4>
             <div class="text-muted exp-meta">
               Dec 2013 –
@@ -1187,14 +1225,14 @@
     
     
       <div class="card experience course">
-        <div class="card-body"><h4 class="card-title exp-title text-muted my-0">Spirit of the Knight Award</h4><div class="card-subtitle my-0 article-metadata"><a href="https://www.ohsu.edu/knight-cancer-institute" target="_blank" rel="noopener">OHSU Knight Cancer Institute</a><span class="middot-divider"></span>
+        <div class="card-body"><h4 class="card-title exp-title text-muted my-0"><em>Spirit of the Knight</em> Award</h4><div class="card-subtitle my-0 article-metadata"><a href="https://www.ohsu.edu/knight-cancer-institute" target="_blank" rel="noopener">OHSU Knight Cancer Institute</a><span class="middot-divider"></span>
 
             Dec 2019
             
           </div>
 
           
-            <div class="card-text">Peer-nominated award recognizing individuals for exceptional embodiment of the Knight Cancer Institute&rsquo;s guiding principles (in my case, <em>Working as a Connected Team</em>)</div>
+            <div class="card-text">Peer-nominated award recognizing individuals for exceptional embodiment of the Knight Cancer Institute&rsquo;s guiding principles (in my case, <em>Working as a Connected Team</em>).</div>
           
 
           
