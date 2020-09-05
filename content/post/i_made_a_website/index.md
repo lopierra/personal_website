@@ -106,6 +106,8 @@ Future directions:
 
 Next time try [this workflow](https://www.garrickadenbuie.com/blog/blogdown-netlify-new-post-workflow/) for adding a new post.
 
+Also, pretty sure you don't have to commit the `public/` folder to GitHub - just the other files that have changed.
+
 ---
 
 ## References
