@@ -3,7 +3,7 @@ title: "csv,conf,v5 recap"
 author: "Pierrette Lo"
 date: 2020-05-18
 categories: ["R"]
-tags: ["csv,conf", "open science"]
+tags: ["csv,conf", "open science", "conferences"]
 summary: Rundown of my favourite things at csv,conf,v5
 image:
   placement: 1

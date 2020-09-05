@@ -100,7 +100,11 @@ Future directions:
 * Start a new Google Analytics account for this website and add the account ID to `params.toml`
 * Add _redirects file to /static for ...[reasons](https://yihui.org/en/2017/11/301-redirect/)
 
-* *Note:* The `public` folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the `public` folder. 
+* *Note:* The `public` folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the `public` folder.
+
+### 9. Updating
+
+Next time try [this workflow](https://www.garrickadenbuie.com/blog/blogdown-netlify-new-post-workflow/) for adding a new post.
 
 ---
 
