@@ -1,0 +1,418 @@
+---
+title: Playing with {ggplot2} extensions
+author: Pierrette Lo
+date: '2020-10-21'
+slug: playing-with-ggplot2-extensions
+categories:
+  - R
+tags:
+  - dataviz
+  - ggplot2
+subtitle: ''
+summary: 'Making a figure with {patchwork}, {ggtext}, and {ggalt}'
+authors: []
+lastmod: '2020-10-21T08:49:07-07:00'
+featured: no
+image:
+  caption: 'patchwork logo'
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Recently, a friend asked me to make a simple data visualization for her. The dataset was tiny and, to be honest, not super interesting (a very simple survey of [not very much] diversity among her department’s leadership and overall membership). But the nice thing about a simple dataset is that for once I could spend less time on data cleaning and more time playing with aesthetics.</p>
+<p>Here are the libraries I used:</p>
+<pre class="r"><code>library(tidyverse)
+library(readxl)
+library(ggalt)
+library(patchwork)
+library(ggtext)</code></pre>
+<div id="data-wrangling" class="section level3">
+<h3>Data Wrangling</h3>
+<p>The data I was given was an Excel sheet that looked like this:</p>
+<p><img src="/post/diversity_figure/data_screencap.PNG" /></p>
+<p>I started by doing a bit of data cleanup in Excel. If the dataset had been larger, I might have tried using {readxl} to clean it up in R, but in this case it took about 30 seconds to do it in Excel.</p>
+<p>I separated each table onto a different tab, added a “personnel” header (for “Overall” vs “Leadership” categories), and corrected the typo in Race (“Indian<del>a</del>”).</p>
+<p>I next used the {readxl} package to import the Excel data…</p>
+<pre class="r"><code># specify path of original data
+path &lt;- &quot;blog_data.xlsx&quot;
+
+# read in all sheets as a named list
+data &lt;- path %&gt;% 
+  excel_sheets() %&gt;% 
+  set_names() %&gt;% 
+  map(read_xlsx, path = path)
+
+# split list into separate dataframes
+list2env(data, .GlobalEnv)</code></pre>
+<p>…And now I have three little dataframes.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1: </span>ethnicity</caption>
+<thead>
+<tr class="header">
+<th align="left">personnel</th>
+<th align="right">Hispanic</th>
+<th align="right">Not Hispanic</th>
+<th align="left">Unsp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Dept Overall</td>
+<td align="right">0.054</td>
+<td align="right">0.946</td>
+<td align="left">1E-3</td>
+</tr>
+<tr class="even">
+<td align="left">Dept Leadership</td>
+<td align="right">0.030</td>
+<td align="right">0.970</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="width: auto !important; ">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 2: </span>gender
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+personnel
+</th>
+<th style="text-align:right;">
+Female
+</th>
+<th style="text-align:right;">
+Male
+</th>
+<th style="text-align:right;">
+Unsp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Dept Overall
+</td>
+<td style="text-align:right;">
+0.346
+</td>
+<td style="text-align:right;">
+0.654
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dept Leadership
+</td>
+<td style="text-align:right;">
+0.364
+</td>
+<td style="text-align:right;">
+0.636
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="width: auto !important; ">
+<caption>
+<span id="tab:unnamed-chunk-3">Table 3: </span>race
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+personnel
+</th>
+<th style="text-align:right;">
+White
+</th>
+<th style="text-align:right;">
+African American
+</th>
+<th style="text-align:left;">
+American Indian
+</th>
+<th style="text-align:right;">
+Asian
+</th>
+<th style="text-align:left;">
+Native Hawaiian
+</th>
+<th style="text-align:left;">
+Multi-race
+</th>
+<th style="text-align:left;">
+Unsp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Dept Overall
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+0.066
+</td>
+<td style="text-align:left;">
+6.0000000000000001E-3
+</td>
+<td style="text-align:right;">
+0.152
+</td>
+<td style="text-align:left;">
+2E-3
+</td>
+<td style="text-align:left;">
+4.2000000000000003E-2
+</td>
+<td style="text-align:left;">
+1.2E-2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dept Leadership
+</td>
+<td style="text-align:right;">
+0.85
+</td>
+<td style="text-align:right;">
+0.030
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.120
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>Next up: tidying each dataframe (yes, I copied and pasted more than twice and therefore should have written some functions, but again I was in a hurry to get to the fun part).</p>
+<p>Here’s what I did for the <code>ethnicity</code> dataframe, which I repeated for <code>gender</code> and <code>race</code>.</p>
+<pre class="r"><code>ethnicity &lt;- ethnicity %&gt;%
+  
+  # convert all columns except personnel to numeric
+  mutate_at(vars(-personnel), as.numeric) %&gt;% 
+  
+  # make it tidy (i.e. long) format
+  pivot_longer(-personnel, names_to = &quot;ethnicity&quot;, values_to = &quot;percent&quot;) %&gt;% 
+  
+  # convert decimals to percentages; convert `ethnicity` and `personnel` to factors
+  mutate(percent = percent * 100,
+         ethnicity = as.factor(str_replace(ethnicity, &quot;Unsp&quot;, &quot;Unspecified&quot;)),
+         personnel = as.factor(personnel)) %&gt;% 
+  
+  # replace NAs with 0 (after confirming with my friend that this was the intent)
+  replace_na(list(percent = 0))</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 4: </span>ethnicity
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+personnel
+</th>
+<th style="text-align:left;">
+ethnicity
+</th>
+<th style="text-align:right;">
+percent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Dept Overall
+</td>
+<td style="text-align:left;">
+Hispanic
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dept Overall
+</td>
+<td style="text-align:left;">
+Not Hispanic
+</td>
+<td style="text-align:right;">
+94.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dept Overall
+</td>
+<td style="text-align:left;">
+Unspecified
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dept Leadership
+</td>
+<td style="text-align:left;">
+Hispanic
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dept Leadership
+</td>
+<td style="text-align:left;">
+Not Hispanic
+</td>
+<td style="text-align:right;">
+97.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dept Leadership
+</td>
+<td style="text-align:left;">
+Unspecified
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-visualization" class="section level3">
+<h3>Data Visualization</h3>
+<p>Now for the fun stuff! There’s a whole universe of {ggplot2} extensions, many (but not all) of which are listed <a href="https://exts.ggplot2.tidyverse.org/">here</a>.</p>
+<p>I picked a few that I had been wanting to play with: <a href="https://bbc.github.io/rcookbook/">{bbplot}</a> for theme, <a href="https://github.com/hrbrmstr/ggalt">{ggalt}</a> for dumbbell plots, <a href="https://patchwork.data-imaginist.com/">{patchwork}</a> to arrange plots, and <a href="https://wilkelab.org/ggtext/">{ggtext}</a> for HTML text styling.</p>
+<p>I started by setting up a custom theme for my plots – largely borrowed from the BBC’s <a href="https://bbc.github.io/rcookbook/#how_to_create_bbc_style_graphics">{bbplot}</a> package.</p>
+<p>The preset theme can be applied directly as a <code>ggplot</code> layer using <code>bbplot::bbc_style()</code>, but I made some tweaks and saved it as <code>my_theme</code>.</p>
+<pre class="r"><code>my_colors &lt;- c(&quot;#FAAB18&quot;, &quot;#1380A1&quot;)
+
+my_theme &lt;- theme_light() +
+  theme(axis.ticks = element_blank(), 
+        axis.line = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_line(color = &quot;#cbcbcb&quot;),
+        panel.grid.major.x = element_blank(), 
+        panel.background = element_blank(),
+        panel.border = element_blank())
+
+theme_set(my_theme)</code></pre>
+<p>Now I create each bar plot (for Gender, Ethnicity, and Race) separately.</p>
+<ul>
+<li>Reorder gender by percent</li>
+<li>Set y axis 0-100 so all plots have the same range</li>
+<li>Use custom colors (from <code>bbplot::bbc_style</code>)</li>
+<li>Use <code>color</code> in bars (in addition to <code>fill</code>) so 0 shows as a line</li>
+</ul>
+<pre class="r"><code>p1 &lt;- ethnicity %&gt;%
+  mutate(ethnicity = fct_reorder(ethnicity, percent, na.rm = T)) %&gt;% 
+  ggplot(aes(x = ethnicity, y = percent, fill = personnel, color = personnel)) +
+  geom_col(position = &quot;dodge&quot;) +
+  coord_flip(ylim = c(0, 100)) +
+  ggtitle(&quot;Ethnicity&quot;) +
+  xlab(NULL) +
+  ylab(NULL) +
+  scale_fill_manual(values = my_colors) +
+  scale_color_manual(values = my_colors)
+
+p2 &lt;- gender %&gt;%
+  mutate(gender = fct_reorder(gender, percent)) %&gt;% 
+  ggplot(aes(x = gender, y = percent, fill = personnel, color = personnel)) +
+  geom_col(position = &quot;dodge&quot;) +
+  coord_flip(ylim = c(0, 100)) +
+  ggtitle(&quot;Gender&quot;) +
+  xlab(NULL) +
+  ylab(NULL) +
+  scale_fill_manual(values = my_colors) +
+  scale_color_manual(values = my_colors)
+
+p3 &lt;- race %&gt;%
+  mutate(race = fct_reorder(race, percent, na.rm = T)) %&gt;% 
+  ggplot(aes(x = race, y = percent, fill = personnel, color = personnel)) + 
+  geom_col(position = &quot;dodge&quot;) +
+  coord_flip(ylim = c(0, 100)) +
+  ggtitle(&quot;Race&quot;) +
+  xlab(NULL) +
+  ylab(NULL) +
+  scale_fill_manual(values = my_colors) +
+  scale_color_manual(values = my_colors)</code></pre>
+<p>Then I use {patchwork} to stitch them together, and {ggtext} to add color to the title in lieu of a legend.</p>
+<ul>
+<li>“Collect” guides so legends from each plot are treated the same (ie. deleted)</li>
+<li>Use {ggtext} <code>element_textbox_simple</code> or <code>element_markdown</code> to allow html in title</li>
+</ul>
+<pre class="r"><code>p3 + (p1 / p2) +
+  plot_layout(guides = &quot;collect&quot;) +
+  plot_annotation(title = &quot;&lt;span style=&#39;font-size:18pt&#39;&gt;Diversity in Department &lt;b style=&#39;color:#FAAB18;&#39;&gt;Leadership&lt;/b&gt; vs &lt;b style=&#39;color:#1380A1;&#39;&gt;Overall&lt;/b&gt;&lt;/span&gt;&quot;,
+                  subtitle = &quot;Percentages of personnel in each category are shown&quot;,
+                  theme = theme(plot.title = element_markdown(lineheight = 1.1))) &amp;
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="/post/diversity_figure/2020-10-21-playing-with-ggplot2-extensions.en_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>I also repeated the above, but with Race shown in a dumbbell plot:</p>
+<pre class="r"><code>p4 &lt;- race %&gt;%
+  mutate(race = fct_reorder(race, percent, na.rm = T)) %&gt;%
+  pivot_wider(names_from = personnel, values_from = percent) %&gt;% 
+  ggplot() +
+  geom_dumbbell(aes(x = `Dept Overall`, xend = `Dept Leadership`, y = race),
+                size = 3, 
+                colour = &quot;#dddddd&quot;, 
+                colour_x = &quot;#1380A1&quot;, 
+                colour_xend = &quot;#FAAB18&quot;,
+                show.legend = F) +
+  coord_cartesian(xlim = c(0,100)) +
+  ggtitle(&quot;Race&quot;) +
+  xlab(NULL) +
+  ylab(NULL)</code></pre>
+<p>And here’s the patchwork:</p>
+<pre class="r"><code>p4 + (p1 / p2) +
+  plot_layout(guides = &quot;collect&quot;) +
+  plot_annotation(title = &quot;&lt;span style=&#39;font-size:18pt&#39;&gt;Diversity in Dept &lt;b style=&#39;color:#FAAB18;&#39;&gt;Leadership&lt;/b&gt; vs &lt;b style=&#39;color:#1380A1;&#39;&gt;Overall&lt;/b&gt;&lt;/span&gt;&quot;,
+                  subtitle = &quot;Percentages of personnel in each category are shown&quot;,
+                  theme = theme(plot.title = element_markdown(lineheight = 1.1))) &amp;
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="/post/diversity_figure/2020-10-21-playing-with-ggplot2-extensions.en_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="bonus-tip" class="section level3">
+<h3>BONUS TIP!</h3>
+<p>Thanks to <a href="https://jozef.io/r909-rmarkdown-tips/">this</a> helpful post, I discovered that you can use xaringan’s Infinite Moon Reader to get live previews of RMarkdown documents (not just xaringan slides!).</p>
+<p>After installing <a href="https://github.com/yihui/xaringan">{xaringan}</a>, you can either run <code>xaringan:::inf_mr()</code> or select “Infinite Moon Reader” from the RStudio Addins drop-down menu.</p>
+<p>The preview will appear in the RStudio Viewer pane, and it will refresh every time you save changes to your Rmd. So much better than knitting every time you want to check your formatting!</p>
+</div>
