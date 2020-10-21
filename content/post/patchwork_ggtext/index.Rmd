@@ -1,17 +1,17 @@
 ---
 title: Playing with {ggplot2} extensions
-author: Pierrette Lo
+author: ''
 date: '2020-10-21'
-slug: playing-with-ggplot2-extensions
+slug: patchwork_ggtext
 categories:
   - R
 tags:
   - dataviz
   - ggplot2
 subtitle: ''
-summary: 'Making a figure with {patchwork}, {ggtext}, and {ggalt}'
+summary: ''
 authors: []
-lastmod: '2020-10-21T08:49:07-07:00'
+lastmod: '2020-10-21T11:13:26-07:00'
 featured: no
 image:
   caption: ''
@@ -36,7 +36,7 @@ library(ggtext)
 
 The data I was given was an Excel sheet that looked like this:
 
-![](/post/diversity_figure/data_screencap.PNG)
+![](/post/patchwork_ggtext/data_screencap.PNG)
  
 I started by doing a bit of data cleanup in Excel. If the dataset had been larger, I might have tried using {readxl} to clean it up in R, but in this case it took about 30 seconds to do it in Excel.
 

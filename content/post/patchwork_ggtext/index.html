@@ -1,17 +1,17 @@
 ---
 title: Playing with {ggplot2} extensions
-author: Pierrette Lo
+author: ''
 date: '2020-10-21'
-slug: playing-with-ggplot2-extensions
+slug: patchwork_ggtext
 categories:
   - R
 tags:
   - dataviz
   - ggplot2
 subtitle: ''
-summary: 'Making a figure with {patchwork}, {ggtext}, and {ggalt}'
+summary: ''
 authors: []
-lastmod: '2020-10-21T08:49:07-07:00'
+lastmod: '2020-10-21T11:13:26-07:00'
 featured: no
 image:
   caption: ''
@@ -34,7 +34,7 @@ library(ggtext)</code></pre>
 <div id="data-wrangling" class="section level3">
 <h3>Data Wrangling</h3>
 <p>The data I was given was an Excel sheet that looked like this:</p>
-<p><img src="/post/diversity_figure/data_screencap.PNG" /></p>
+<p><img src="/post/patchwork_ggtext/data_screencap.PNG" /></p>
 <p>I started by doing a bit of data cleanup in Excel. If the dataset had been larger, I might have tried using {readxl} to clean it up in R, but in this case it took about 30 seconds to do it in Excel.</p>
 <p>I separated each table onto a different tab, added a “personnel” header (for “Overall” vs “Leadership” categories), and corrected the typo in Race (“Indian<del>a</del>”).</p>
 <p>I next used the {readxl} package to import the Excel data…</p>
@@ -385,7 +385,7 @@ p3 &lt;- race %&gt;%
                   subtitle = &quot;Percentages of personnel in each category are shown&quot;,
                   theme = theme(plot.title = element_markdown(lineheight = 1.1))) &amp;
   theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="/post/diversity_figure/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/post/patchwork_ggtext/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>I also repeated the above, but with Race shown in a dumbbell plot:</p>
 <pre class="r"><code>p4 &lt;- race %&gt;%
   mutate(race = fct_reorder(race, percent, na.rm = T)) %&gt;%
@@ -408,7 +408,7 @@ p3 &lt;- race %&gt;%
                   subtitle = &quot;Percentages of personnel in each category are shown&quot;,
                   theme = theme(plot.title = element_markdown(lineheight = 1.1))) &amp;
   theme(legend.position = &quot;none&quot;)</code></pre>
-<p><img src="/post/diversity_figure/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="/post/patchwork_ggtext/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="bonus-tip" class="section level3">
 <h3>BONUS TIP!</h3>
