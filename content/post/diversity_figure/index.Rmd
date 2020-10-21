@@ -14,7 +14,7 @@ authors: []
 lastmod: '2020-10-21T08:49:07-07:00'
 featured: no
 image:
-  caption: 'patchwork logo'
+  caption: ''
   focal_point: ''
   preview_only: no
 projects: []

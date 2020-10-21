@@ -102,11 +102,19 @@ Future directions:
 
 * *Note:* The `public` folder is recreated every time you serve/build your site. If things get weird, try deleting the whole folder locally or on GitHub. I did this after noticing that the first time around, all of the example content I deleted was still in the `public` folder.
 
-### 9. Updating
+### 9. Updating/Other Notes to Self
 
 Next time try [this workflow](https://www.garrickadenbuie.com/blog/blogdown-netlify-new-post-workflow/) for adding a new post.
 
 Also, pretty sure you don't have to commit the `public/` folder to GitHub - just the other files that have changed.
+
+When adding a new post using an Rmd file, make sure it's named "index.Rmd", or the featured image won't show.
+
+Inline images can be added relative to the `static` folder, eg. 
+
+```
+![](/post/diversity_figure/data_screencap.PNG)
+```
 
 ---
 
